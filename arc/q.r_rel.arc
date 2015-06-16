@@ -68,7 +68,11 @@
     .if ( participant.Obj_ID == formalizer.Obj_ID )
       .if ( participant.Txt_Phrs == rel_phrase )
         .assign result = "$_{participant.Txt_Phrs}"
+      .elif ( "'${participant.Txt_Phrs}'" == rel_phrase )
+        .assign result = "$_{participant.Txt_Phrs}"
       .elif ( formalizer.Txt_Phrs == rel_phrase )
+        .assign result = "$_{formalizer.Txt_Phrs}"
+      .elif ( "'${formalizer.Txt_Phrs}'" == rel_phrase )
         .assign result = "$_{formalizer.Txt_Phrs}"
       .else
         .assign msg = "\nTRANSLATION ERROR:  ${right_o_obj.Key_Lett}[R$t{r_rel.Numb}.'${rel_phrase}']"
